@@ -53,22 +53,6 @@ public:
 		}
 	}
 
-	
-	//Matrix& operator=(Matrix& other) {
-		//delete[] rows;
-
-
-		/*
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				//rows[i][j] = other[i][j];
-			}
-		}
-		*/
-		//return *this;
-	//}
-	 
-
 	Row& operator[](int n) {return rows[n];}
 
 	void out() {
@@ -99,29 +83,31 @@ public:
 			}
 			return low_mat.det();
 		}
-
-		/*
-		else {
-			int res = 0;
-			int sign = 1;
-			for (int i = 1; i < getSize(); i++) {
-				for (int j = 0; j < getSize(); j++) {
-					res +=  ;
-
-					sign *= -1;
-				}
-			}
-
-
-		}
-		*/
-		
-		
-
 	}
 
 	int getSize() {
 		return size;
 	}
 
+	void transpose() {
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				std::swap(matrix[i][j], matrix[j][i])
+			}
+		}
+	}
+
+	bool is_triangle(int widht) {
+
+		for (int i = 0; i < size; i++) {
+			for (int j = i+ widht; j < size; j++) {
+				if (matrix[j][i] != 0) {
+
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 };
+
