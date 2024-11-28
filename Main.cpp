@@ -4,6 +4,7 @@
 #include "Matrix.h"
 
 Matrix<int> readFile(std::ifstream& inputFile) {
+    
     int size;
     inputFile >> size;
     inputFile.ignore();
@@ -34,9 +35,21 @@ int main(int argc, char* argv[]) {
     Matrix<int> Mat(4);
     Mat = readFile(inputFile);
     Mat.out();
-    
+  
+    std::cout << "============\n";
 
-    std::cout << Mat.det();
+    Mat.transpose();
+    Mat.out();
+    std::cout << "============\n";
 
+    Mat.transpose();
+    Mat.out();
+    if (Mat.is_triangle(1)) {
+        std::cout << "TRIANGLE!\n";
+    }
+
+    if (Mat.is_tape()) {
+        std::cout << "TAPE!\n";
+   }
 
 }

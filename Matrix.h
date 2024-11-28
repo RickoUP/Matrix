@@ -91,8 +91,8 @@ public:
 
 	void transpose() {
 		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				std::swap(matrix[i][j], matrix[j][i])
+			for (int j = i; j < size; j++) {
+				std::swap(rows[i][j], rows[j][i]);
 			}
 		}
 	}
@@ -101,13 +101,23 @@ public:
 
 		for (int i = 0; i < size; i++) {
 			for (int j = i+ widht; j < size; j++) {
-				if (matrix[j][i] != 0) {
+				if (rows[j][i] != 0) {
 
 					return false;
 				}
 			}
 		}
 		return true;
+	}
+
+	bool is_tape() {
+		
+		bool res = true;
+		res &= is_triangle(2);
+		transpose();
+		res &= is_triangle(2);
+		transpose();
+		return res;
 	}
 };
 
