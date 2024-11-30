@@ -102,7 +102,6 @@ public:
 	Matrix<double> & inv() {
 
 		int det_ = det();
-		std::cout << "DET; " << det_ << '\n';
 		Matrix<double> inversed(getSize());
 		Matrix<double> mat_low(getSize()-1);
 
@@ -114,8 +113,6 @@ public:
 
 				mat_low = addition();
 
-				std::cout << "\t" << mat_low.det() << '\n';
-				mat_low.out();
 				int sign = (row_iter + colm_iter) % 2 == 0 ? 1 : -1;
 				double A = mat_low.det() / det_;
 				if (A != 0) {
